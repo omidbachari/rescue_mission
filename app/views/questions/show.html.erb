@@ -4,6 +4,8 @@
 
 <%= @question.description %>
 <br>
+<%= button_to "delete", @question, :method => :delete %>
+<br>
 <a href='/questions'>Back</a>
 
 <h3>Answers:</h3>

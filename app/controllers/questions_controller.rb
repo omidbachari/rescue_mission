@@ -16,6 +16,26 @@ def edit
 
 end
 
+def destroy
+  @question = Question.find(params[:id])
+
+  @question.destroy
+
+  redirect_to questions_path
+end
+
+def update
+  @question = Question.find(params[:id])
+
+  if @question.update(question_params)
+    flash[:notice] = "You updated it, successfully!"
+    redirect_to question_path(@question)
+  else
+    flash.now[:notice] = "It didn't work"
+    render :edit
+  end
+end
+
 def new
   @question = Question.new
 

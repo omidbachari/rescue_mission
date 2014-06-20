@@ -2,7 +2,7 @@
 
 <ul>
 <% @questions.each do |question| %>
-<li><a href='/questions/<%= question.id %>'><%= question.title %></li>
+<li><%= link_to "#{question.title}", question_path(question) %><br><%= link_to "Edit", edit_question_path(question) %></li>
 <% end %>
 
 
