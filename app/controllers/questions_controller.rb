@@ -6,11 +6,19 @@ def index
 end
 
 def show
-  @questions = Question.find(params[:id])
+  @question = Question.find(params[:id])
+  @answer = Answer.new
+  @answers = Answer.order('created_at DESC')
+end
+
+def edit
+  @question = Question.find(params[:id])
+
 end
 
 def new
   @question = Question.new
+
 end
 
 def create
@@ -23,6 +31,8 @@ def create
     flash.now[:notice] = "Something went wrong."
     render :new
   end
+
+
 end
 
   private

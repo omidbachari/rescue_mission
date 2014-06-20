@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  resources :questions, only: [:index, :show, :new, :create]
+  resources :questions, only: [:index, :show, :edit, :new, :create] do
+    resources :answers, only: [:index, :show, :new, :create]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

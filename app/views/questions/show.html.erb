@@ -1,7 +1,32 @@
-<h1><%= @questions.title %></h1>
+<h1><%= @question.title %></h1>
 
 <h3>Description:</h3>
 
-<%= @questions.description %>
+<%= @question.description %>
 <br>
 <a href='/questions'>Back</a>
+
+<h3>Answers:</h3>
+<ul>
+<% @question.answers.each do |answer| %>
+<li><%= answer.description %></li>
+<% end %>
+</ul>
+
+<%= form_for [@question, @answer] do |f| %>
+
+  <% if @answer.errors.any? %>
+    <ul>
+      <% @answer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <%= f.submit 'Submit' %>
+<% end %>
